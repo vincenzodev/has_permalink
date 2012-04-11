@@ -35,12 +35,12 @@ module HasPermalink
 
     # Generate permalink for the instance if the permalink is empty or nil.
     def generate_permalink
-      self.permalink = fix_duplication(normalize(self.send(generate_from))) if permalink.blank?
+      self[:permalink] = fix_duplication(normalize(self.send(generate_from))) if permalink.blank?
     end
 
     # Generate permalink for the instance and overwrite any existing value.
     def generate_permalink!
-      self.permalink = fix_duplication(normalize(self.send(generate_from)))
+      self[:permalink] = fix_duplication(normalize(self.send(generate_from)))
     end
 
     # Override to send permalink as params[:id]
